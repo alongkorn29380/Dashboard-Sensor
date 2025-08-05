@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resopoonsive Dashbord</title>
+    <!-- Material icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./garp.css">
+    <!---Script-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./images/bu1.jpg">
+                    <h2>Air <span class="danger">Quality</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index.html" class="">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="data.html" class="">
+                    <span class="material-icons-sharp">description</span>
+                    <h3>Data</h3>
+                </a>
+                <a href="garp.html" class="active">
+                    <span class="material-icons-sharp">insights</span>
+                    <h3>Graph</h3>
+                </a>
+            </div>
+        </aside>
+        <!------------ END OF ASIDE ------------>
+        <main>
+            <h1>Dashboard</h1>
+
+            <div class="date">
+                <label for="date-input">วันที่:</label>
+                <input type="text" id="date-input" readonly> <!-- เปลี่ยนเป็น text input แสดงวัน/เดือน/ปี -->
+
+            </div>
+
+            <div style="margin: 20px 0;">
+                <button id="connect-serial" style="padding: 10px 20px; font-size: 16px;">
+                    เชื่อมต่อ Serial Port
+                </button>
+            </div>
+
+            <div class="insights">
+                <!-- Temperature -->
+                <div class="temperature">
+                    <span class="material-icons-sharp">ac_unit</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Temperature</h3>
+                        </div>
+                        <div class="card-value" id="temp-value">0°C</div>
+                    </div>
+                    <div class="temp-chart">
+                        <canvas id="temp-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Humidity -->
+                <div class="humidity">
+                    <span class="material-icons-sharp">water_drop</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Humidity</h3>
+                        </div>
+                        <div class="card-value" id="hum-value">0°C</div>
+                    </div>
+                    <div class="hum-chart">
+                        <canvas id="hum-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Pressure -->
+                <div class="pressure">
+                    <span class="material-icons-sharp">speed</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Pressure</h3>
+                        </div>
+                        <div class="card-value" id="pre-value">0 pha°C</div>
+                    </div>
+                    <div class="pre-chart">
+                        <canvas id="pre-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- CO -->
+                <div class="co">
+                    <span class="material-icons-sharp">co2</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Carbon Dioxide</h3>
+                        </div>
+                        <div class="card-value" id="co-value">0°C</div>
+                    </div>
+                    <div class="co-chart">
+                        <canvas id="co-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Methane -->
+                <div class="methane">
+                    <span class="material-icons-sharp">invert_colors</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>methane</h3>
+                        </div>
+                        <div class="card-value" id="met-value">0°C</div>
+                    </div>
+                    <div class="met-chart">
+                        <canvas id="met-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Ethanol -->
+                <div class="ethanol">
+                    <span class="material-icons-sharp">opacity</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Ethanol</h3>
+                        </div>
+                        <div class="card-value" id="eth-value">0°C</div>
+                    </div>
+                    <div class="eth-chart">
+                        <canvas id="eth-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Nitrogen -->
+                <div class="nitrogen">
+                    <span class="material-icons-sharp">air</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Nitrogen</h3>
+                        </div>
+                        <div class="card-value" id="nit-value">0°C</div>
+                    </div>
+                    <div class="nit-chart">
+                        <canvas id="nit-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Ammonia -->
+                <div class="ammonia">
+                    <span class="material-icons-sharp">mode_fan_off</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Ammonia</h3>
+                        </div>
+                        <div class="card-value" id="amm-value">0°C</div>
+                    </div>
+                    <div class="amm-chart">
+                        <canvas id="amm-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Nitrogen dioxide -->
+                <div class="nitrodiox">
+                    <span class="material-icons-sharp">whatshot</span>
+                    <div class="middle">
+                        <div class="lef">
+                            <h3>Nitrogen dioxide</h3>
+                        </div>
+                        <div class="card-value" id="nitr-value">0°C</div>
+                    </div>
+                    <div class="nitr-chart">
+                        <canvas id="nitr-chart"></canvas>
+                    </div>
+                </div>
+        </main>
+        <script src="garp.js"></script>
+</body>
+
+</html>

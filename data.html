@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resopoonsive Dashbord</title>
+    <!-- Material icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./data.css">
+    <!---Script-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="./images/bu1.jpg">
+                    <h2>Air <span class="danger">Quality</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index.html" class="">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="data.html" class="active">
+                    <span class="material-icons-sharp">description</span>
+                    <h3>Data</h3>
+                </a>
+                <a href="garp.html" class="">
+                  <span class="material-icons-sharp">insights</span>
+                  <h3>Graph</h3>
+              </a>
+            </div>
+        </aside>
+        <!------------ END OF ASIDE ------------>
+        <main>
+                <div class="insights">
+                    <!-- Temperature -->
+                    <div class="temperature">
+                        <span class="material-icons-sharp">ac_unit</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Temperature</h3>
+                                <div class="temp-sectionlow">
+                                  <strong>ระดับต่ำ (Low)</strong><br>
+                                  อุณหภูมิในช่วงนี้มีค่าต่ำกว่าปกติ เช่น ในกรณีที่อุณหภูมิต่ำกว่า 20°C อาจส่งผลให้ระบบบางอย่างทำงานได้ไม่เต็มประสิทธิภาพ หรือส่งผลกระทบต่อร่างกาย เช่น หนาวสั่น หรือเป็นไข้
+                                </div>
+                              
+                                <div class="temp-sectionnormal">
+                                  <strong>ระดับปกติ (Normal)</strong><br>
+                                  ช่วงอุณหภูมิที่เหมาะสม อยู่ระหว่างประมาณ 20°C - 30°C เป็นช่วงที่ปลอดภัย เหมาะสำหรับการทำงานของเครื่องจักรและสภาพร่างกายของมนุษย์
+                                </div>
+                              
+                                <div class="temp-sectionhigh">
+                                  <strong>ระดับสูง (High)</strong><br>
+                                  เมื่ออุณหภูมิเกินกว่า 30°C จะถือว่าสูง อาจก่อให้เกิดความร้อนเกินในระบบอุปกรณ์ หรือเสี่ยงต่อปัญหาสุขภาพ เช่น โรคลมแดด หรือการขาดน้ำ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="temp-chart">
+                        </div>
+                    </div>
+
+                    <!-- Humidity -->
+                    <div class="humidity">
+                        <span class="material-icons-sharp">water_drop</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Humidity</h3>
+                                <div class="humidity-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ความชื้นน้อยกว่า 30%<br>
+                                    อากาศแห้งเกินไป อาจทำให้ผิวแห้ง ระคายเคืองจมูก เพิ่มความเสี่ยงต่อไฟฟ้าสถิต และไม่เหมาะกับการเก็บวัสดุไวไฟหรือเปราะบาง
+                                  </div>
+                                
+                                  <div class="humidity-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    ความชื้นอยู่ระหว่าง 30% - 60%<br>
+                                    เป็นช่วงที่เหมาะสม รู้สึกสบาย ไม่ร้อนหรือแห้งเกินไป เหมาะกับการอยู่อาศัยและทำงานของเครื่องใช้ต่าง ๆ
+                                  </div>
+                                
+                                  <div class="humidity-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    ความชื้นมากกว่า 60%<br>
+                                    อากาศชื้นเกินไป อาจทำให้รู้สึกอบอ้าว เสี่ยงต่อเชื้อราและแบคทีเรีย และส่งผลเสียต่อเครื่องใช้ไฟฟ้าหรือวัสดุไวต่อความชื้น
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="hum-chart">
+                        </div>
+                    </div>
+
+                    <!-- Pressure -->
+                    <div class="pressure">
+                        <span class="material-icons-sharp">speed</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Pressure</h3>
+                                <div class="pressure-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ความดันน้อยกว่า 1000 hPa<br>
+                                    อาจบ่งบอกถึงพายุหรือฝนตก ความดันต่ำอาจทำให้รู้สึกเหนื่อยหรือปวดหัวในบางคน และอาจส่งผลต่อระบบการบินหรือเครื่องจักร
+                                  </div>
+                                
+                                  <div class="pressure-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    ความดันอยู่ระหว่าง 1000 - 1020 hPa<br>
+                                    เป็นช่วงที่เหมาะสมต่อกิจกรรมทั่วไป สภาพอากาศปกติ อากาศแจ่มใส เครื่องจักรทำงานได้ดี
+                                  </div>
+                                
+                                  <div class="pressure-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    ความดันมากกว่า 1020 hPa<br>
+                                    อาจสัมพันธ์กับอากาศแห้ง ท้องฟ้าแจ่มใส แต่ถ้าสูงมากเกินไปอาจส่งผลต่อผู้มีปัญหาด้านความดันโลหิตหรือความรู้สึกไม่สบายในที่สูง
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="pre-chart">
+                        </div>
+                    </div>
+
+                    <!-- CO -->
+                    <div class="co">
+                        <span class="material-icons-sharp">co2</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Carbon Dioxide</h3>
+                                <div class="co2-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 400 ppm<br>
+                                    อากาศบริสุทธิ์ สดชื่น เหมาะกับการหายใจและการทำงานในระยะยาว
+                                  </div>
+                                
+                                  <div class="co2-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    400 – 1000 ppm<br>
+                                    อยู่ในช่วงปกติสำหรับพื้นที่ปิด เช่น ห้องเรียน ห้องประชุม ไม่ส่งผลกระทบต่อสุขภาพ
+                                  </div>
+                                
+                                  <div class="co2-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    เกิน 1000 ppm<br>
+                                    ควรระบายอากาศ อาจทำให้รู้สึกง่วง เวียนหัว สมาธิลดลง และส่งผลต่อสุขภาพในระยะยาว
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="co-chart">
+                        </div>
+                    </div>
+
+                    <!-- Methane -->
+                    <div class="methane">
+                        <span class="material-icons-sharp">invert_colors</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>methane</h3>
+                                <div class="methane-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 1000 ppm<br>
+                                    ปลอดภัย ไม่มีความเสี่ยงต่อการติดไฟหรือระเบิด อากาศถือว่าปลอดโปร่ง
+                                  </div>
+                                
+                                  <div class="methane-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    1000 – 5000 ppm<br>
+                                    เริ่มมีการสะสมของก๊าซ อาจเกิดจากการรั่วไหลเล็กน้อย ยังไม่อันตรายแต่ควรติดตาม
+                                  </div>
+                                
+                                  <div class="methane-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    มากกว่า 5000 ppm หรือเข้าใกล้ 5% (LEL)<br>
+                                    อันตราย! เสี่ยงต่อการระเบิดหากมีแหล่งจุดไฟ ควรระบายอากาศทันทีและตรวจสอบแหล่งรั่ว
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="met-chart">
+                        </div>
+                    </div>
+
+                    <!-- Ethanol -->
+                    <div class="ethanol">
+                        <span class="material-icons-sharp">opacity</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Ethanol</h3>
+                                <div class="ethanol-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 100 ppm<br>
+                                    ปลอดภัย ไม่มีความเสี่ยงต่อสุขภาพ และไม่เป็นอันตรายต่อการใช้งานทั่วไป
+                                  </div>
+                                
+                                  <div class="ethanol-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    100 – 500 ppm<br>
+                                    สามารถพบได้ในบางสภาพแวดล้อม เช่น ห้องทดลองหรือโรงงานผลิต มีความเสี่ยงต่ำต่อสุขภาพ
+                                  </div>
+                                
+                                  <div class="ethanol-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    มากกว่า 500 ppm<br>
+                                    ควรระวัง! ความเข้มข้นสูงเกินไปอาจทำให้เกิดผลกระทบต่อสุขภาพ เช่น อาการเวียนหัว หายใจไม่สะดวก หรือเสี่ยงต่อการเกิดเพลิงไหม้หากมีแหล่งจุดติดไฟ
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="eth-chart">
+                        </div>
+                    </div>
+
+                    <!-- Nitrogen -->
+                    <div class="nitrogen">
+                        <span class="material-icons-sharp">air</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Nitrogen</h3>
+                                <div class="nitrogen-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 1000 ppm<br>
+                                    ปลอดภัยในพื้นที่ที่มีการระบายอากาศดี ไม่มีผลกระทบต่อสุขภาพ
+                                  </div>
+                                
+                                  <div class="nitrogen-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    1000 – 5000 ppm<br>
+                                    ความเข้มข้นของไนโตรเจนในอากาศปกติ ส่วนใหญ่ไม่ส่งผลกระทบต่อสุขภาพและการทำงาน
+                                  </div>
+                                
+                                  <div class="nitrogen-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    มากกว่า 5000 ppm<br>
+                                    อาจทำให้การหายใจลำบากและเสี่ยงต่อการขาดออกซิเจนในพื้นที่ที่มีไนโตรเจนสูง ควรระมัดระวังการทำงานในพื้นที่ปิด
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="nit-chart">
+                        </div>
+                    </div>
+
+                    <!-- Ammonia -->
+                    <div class="ammonia">
+                        <span class="material-icons-sharp">mode_fan_off</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Ammonia</h3>
+                                <div class="ammonia-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 25 ppm<br>
+                                    ปลอดภัย ไม่มีผลกระทบต่อสุขภาพ การทำงานหรือการหายใจในพื้นที่นี้ถือว่าปลอดภัย
+                                  </div>
+                                
+                                  <div class="ammonia-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    25 – 50 ppm<br>
+                                    ระดับแอมโมเนียที่ไม่เป็นอันตรายในพื้นที่ที่มีการระบายอากาศดี อาจมีการระคายเคืองเล็กน้อย
+                                  </div>
+                                
+                                  <div class="ammonia-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    มากกว่า 50 ppm<br>
+                                    ระดับอันตราย! การหายใจในพื้นที่ที่มีระดับแอมโมเนียสูงอาจทำให้เกิดการระคายเคืองที่ระบบทางเดินหายใจ ตา และผิวหนัง ควรระมัดระวังและหลีกเลี่ยง
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="amm-chart">
+                        </div>
+                    </div>
+
+                    <!-- Nitrogen dioxide -->
+                    <div class="nitrodiox">
+                        <span class="material-icons-sharp">whatshot</span>
+                        <div class="middle">
+                            <div class="lef">
+                                <h3>Nitrogen dioxide</h3>
+                                <div class="no2-sectionlow">
+                                    <strong>ระดับต่ำ (Low)</strong><br>
+                                    ต่ำกว่า 50 ppb<br>
+                                    ปลอดภัยสำหรับการหายใจ ไม่มีผลกระทบต่อสุขภาพในระยะยาว
+                                  </div>
+                                
+                                  <div class="no2-sectionnormal">
+                                    <strong>ระดับปกติ (Normal)</strong><br>
+                                    50 – 100 ppb<br>
+                                    ความเข้มข้นปกติในอากาศที่อาจพบได้ในพื้นที่ที่มีการจราจรหรือในเมือง
+                                  </div>
+                                
+                                  <div class="no2-sectionhigh">
+                                    <strong>ระดับสูง (High)</strong><br>
+                                    มากกว่า 100 ppb<br>
+                                    อาจเป็นอันตรายต่อระบบทางเดินหายใจและส่งผลกระทบต่อสุขภาพในระยะยาว เช่น โรคหอบหืดและการหายใจลำบาก
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="nitr-chart">
+                        </div>
+                    </div>
+        </main>
+
+        <script src="data.js"></script>
+</body>
+</html>

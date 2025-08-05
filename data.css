@@ -1,0 +1,576 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* นำเข้า font "Poppins" จาก Google Fonts เพื่อใช้เป็นฟอนต์หลักของหน้าเว็บ */
+
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+    /* กำหนดค่าตัวแปรสีหลักที่ใช้ในธีม */
+    --color-primary: #7380ec; /* สีหลัก (น้ำเงิน) */
+    --color-danger: #ff7782; /* สีแดง ใช้สำหรับแจ้งเตือน */
+    --color-success: #41f1b6; /* สีเขียว ใช้สำหรับสถานะสำเร็จ */
+    --color-warning: #ffbb55; /* สีส้ม ใช้สำหรับคำเตือน */
+    --color-white: #fff; /* สีขาว */
+    --color-info-dark: #7d8da1; /* สีเทาเข้ม */
+    --color-info-light: #dce1eb; /* สีเทาอ่อน */
+    --color-dark: #363949; /* สีดำเทา ใช้เป็นสีข้อความหลัก */
+    --color-light: rgba(132, 139, 200, 0.18); /* สีพื้นหลังอ่อน */
+    --color-primary-variant: #111e88; /* สีรองของสีหลัก */
+    --color-dark-variant: #677483; /* สีเทากลาง */
+    --color-background: #f6f6f9; /* สีพื้นหลังหลักของ UI */
+
+    /* กำหนดค่าความโค้งของมุมต่างๆ */
+    --card-border-radius: 2rem; /* ความโค้งของการ์ด */
+    --border-radius-1: 0.4rem; /* ความโค้งระดับเล็ก */
+    --border-radius-2: 0.8rem; /* ความโค้งระดับกลาง */
+    --border-radius-3: 1.2rem; /* ความโค้งระดับใหญ่ */
+
+    /* กำหนดค่าระยะห่าง (Padding) */
+    --card-padding: 1.8rem; /* Padding ภายในการ์ด */
+    --padding-1: 1.2rem; /* Padding ทั่วไปที่ใช้ในหลายๆ องค์ประกอบ */
+
+    /* กำหนดค่าเงาขององค์ประกอบ */
+    --box-shadow: 0 2rem 3rem var(--color-light); /* เงาที่ใช้ใน UI */
+}
+
+
+
+.date input {
+    background-color: transparent; /* ไม่ให้พื้นหลังขาว */
+    padding: 2px 2px;
+    width: 70px; /* ความกว้างของช่อง input */
+}
+
+/* ---------- GLOBAL RESET STYLES ---------- */
+* {
+    margin: 0; /* ล้างค่า margin ทั้งหมด */
+    padding: 0; /* ล้างค่า padding ทั้งหมด */
+    outline: 0; /* ลบเส้นขอบเมื่อมีการ focus */
+    appearance: none; /* ปิดค่าดีฟอลต์ของ Browser */
+    border: 0; /* เอาขอบออก */
+    text-decoration: none; /* เอาเส้นขีดเส้นใต้ของลิงก์ออก */
+    list-style: none; /* เอา bullet หรือหมายเลขของ list ออก */
+    box-sizing: border-box; /* ทำให้ padding และ border ถูกนับรวมในขนาดขององค์ประกอบ */
+}
+
+html {
+    font-size: 14px; /* กำหนดขนาดตัวอักษรพื้นฐาน */
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    width: 100vw; /* ใช้ความกว้างเต็มหน้าจอ */
+    height: 100vh; /* ใช้ความสูงเต็มหน้าจอ */
+    font-family: poppins, sans-serif; /* ใช้ฟอนต์ Poppins ที่นำเข้า */
+    font-size: 0.88rem; /* กำหนดขนาดตัวอักษร */
+    user-select: none; /* ป้องกันการเลือกข้อความ */
+    background: var(--color-background); /* ใช้สีพื้นหลังที่กำหนดไว้ */
+    overflow-x: hidden; /* ปิดการเลื่อนแนวนอน */
+    color: var(--color-dark);
+    padding: 0;
+}
+
+/* ---------- LAYOUT CONTAINER ---------- */
+.container {
+    display: grid; /* ใช้ Grid Layout */
+    width: 100%; /* กำหนดความกว้างของ container */
+    margin: 0 auto; /* จัดกึ่งกลางหน้าจอ */
+    gap: 1.8rem; /* กำหนดระยะห่างระหว่าง Grid Items */
+    grid-template-columns: 14rem auto 1rem; /* กำหนดขนาดของแต่ละคอลัมน์ */
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+a {
+    color: var(--color-dark); /* กำหนดสีของลิงก์ */
+}
+
+img {
+    display: block; /* ทำให้ไม่มีช่องว่างด้านล่างของรูปภาพ */
+    width: 100%; /* กำหนดให้รูปภาพเต็มความกว้างของ container */
+    margin-left: 20px;
+}
+
+/* ---------- HEADING STYLES ---------- */
+h1 {
+    font-weight: 800; /* ความหนาของตัวอักษร */
+    font-size: 1.8rem; /* ขนาดตัวอักษร */
+}
+
+
+h2 {
+    font-size: 1.4rem; /* ขนาดตัวอักษรของหัวข้อระดับ 2 (H2) */
+}
+
+h3 {
+    font-size: 0.87rem; /* ขนาดตัวอักษรของหัวข้อระดับ 3 (H3) */
+}
+
+h4 {
+    font-size: 0.8rem; /* ขนาดตัวอักษรของหัวข้อระดับ 4 (H4) */
+}
+
+h5 {
+    font-size: 0.77rem; /* ขนาดตัวอักษรของหัวข้อระดับ 5 (H5) */
+}
+
+small {
+    font-size: 0.75rem; /* ขนาดตัวอักษรสำหรับข้อความขนาดเล็ก */
+}
+
+/* ---------- PROFILE PHOTO ---------- */
+/* กำหนดรูปแบบของรูปโปรไฟล์ */
+.profile-photo {
+    width: 2.8rem; /* ความกว้างของรูปภาพ */
+    height: 2.8rem; /* ความสูงของรูปภาพ */
+    border-radius: 50%; /* ทำให้รูปภาพเป็นวงกลม */
+    overflow: hidden; /* ป้องกันไม่ให้รูปภาพล้นออกจากขอบ */
+}
+
+/* ---------- TEXT COLOR UTILITY ---------- */
+/* กำหนดสีข้อความสำหรับองค์ประกอบต่างๆ */
+.text-muted {
+    color: var(--color-info-dark); /* สีเทาอ่อนสำหรับข้อความรอง */
+}
+
+p {
+    color: var(--color-dark-variant); /* สีเทาเข้มสำหรับย่อหน้า */
+}
+
+b {
+    color: var(--color-dark); /* สีเข้มสำหรับข้อความตัวหนา */
+}
+
+/* ---------- COLOR UTILITIES ---------- */
+/* กำหนดสีให้กับคลาสที่ใช้ในการแสดงสถานะหรือหมวดหมู่ต่างๆ */
+.primary {
+    color: var(--color-primary); /* สีหลัก (ฟ้า) */
+}
+
+.danger {
+    color: var(--color-danger); /* สีแดง ใช้สำหรับแสดงข้อผิดพลาดหรือคำเตือน */
+}
+
+.success {
+    color: var(--color-success); /* สีเขียว ใช้สำหรับสถานะสำเร็จ */
+}
+
+.warning {
+    color: var(--color-warning); /* สีเหลือง ใช้สำหรับการแจ้งเตือน */
+}
+
+/* ---------- SIDEBAR ---------- */
+/* สไตล์ของแถบด้านข้าง (Sidebar) */
+aside {
+    height: 100vh; /* ให้ Sidebar สูงเท่ากับหน้าจอทั้งหมด */
+}
+
+aside .top {
+    background: white; /* พื้นหลังสีขาว */
+    display: flex; /* ใช้ Flexbox */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    margin-top: 1.4rem; /* เว้นระยะจากด้านบน */
+}
+
+/* ---------- LOGO ---------- */
+aside .logo {
+    display: flex; /* จัดเรียงไอคอนและข้อความให้อยู่ในแนวเดียวกัน */
+    gap: 0.8rem; /* เว้นระยะห่างระหว่างโลโก้กับข้อความ */
+}
+
+aside .logo img {
+    width: 2rem; /* กำหนดขนาดความกว้างของโลโก้ */
+    height: 2rem; /* กำหนดขนาดความสูงของโลโก้ */
+}
+
+aside .close {
+    display: none; /* ซ่อนปุ่มปิด Sidebar */
+}
+
+/* ---------- SIDEBAR MENU ---------- */
+aside .sidebar {
+    background: white;
+    display: flex;
+    flex-direction: column; /* เรียงเมนูในแนวตั้ง */
+    height: 130%; /* กำหนดความสูง */
+    position: relative;
+    top: 2rem; /* เลื่อน Sidebar ลงมา */
+}
+
+/* ---------- SIDEBAR TEXT STYLE ---------- */
+aside h3 {
+    font-weight: 500; /* กำหนดความหนาของตัวอักษร */
+}
+
+/* ---------- SIDEBAR MENU ITEM ---------- */
+aside .sidebar a {
+    margin-top: 2rem;
+    display: flex; /* จัดเรียงไอคอนและข้อความในแนวนอน */
+    color: var(--color-info-dark); /* กำหนดสีข้อความ */
+    margin-left: 2rem; /* กำหนดระยะห่างจากด้านซ้าย */
+    gap: 1rem; /* ระยะห่างระหว่างไอคอนและข้อความ */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    position: relative; /* ใช้สำหรับจัดการตำแหน่ง */
+    height: 4rem; /* กำหนดความสูงของแต่ละเมนู */
+    transition: all 400ms ease; /* ทำให้การเปลี่ยนแปลงเป็นไปอย่างนุ่มนวล */
+}
+
+/* ---------- ICON SIZE INSIDE SIDEBAR ---------- */
+aside .sidebar a span {
+    font-size: 1.6rem; /* กำหนดขนาดของไอคอน */
+    transition: all 400ms ease; /* ทำให้ไอคอนเคลื่อนไหวได้ */
+}
+
+/* ---------- ACTIVE MENU ITEM ---------- */
+aside .sidebar a.active {
+    background: var(--color-light); /* พื้นหลังของเมนูที่ถูกเลือก */
+    color: var(--color-primary); /* เปลี่ยนสีข้อความเป็นสีหลัก */
+    margin-left: 0; /* ชิดขอบซ้าย */
+}
+
+aside .sidebar a.active:before {
+    content: ""; /* สร้างแท่งไฮไลต์ด้านซ้าย */
+    width: 6px; /* ความกว้างของแถบ */
+    height: 100%; /* ความสูงเต็มของเมนู */
+    background: var(--color-primary); /* ใช้สีหลัก */
+}
+
+/* ---------- ACTIVE MENU ITEM ICON ---------- */
+aside .sidebar a.active span {
+    color: var(--color-primary); /* เปลี่ยนสีของไอคอน */
+    margin-left: calc(1rem - 3px); /* เลื่อนไอคอนให้ขยับเล็กน้อย */
+}
+
+/* ---------- HOVER EFFECT ON SIDEBAR ---------- */
+aside .sidebar a:hover {
+    color: var(--color-primary); /* เปลี่ยนสีข้อความเป็นสีหลัก */
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1.5rem; /* ขยับไอคอนไปทางขวา */
+}
+
+
+/* ========== MAIN ==========*/ 
+main {
+    margin-top: 1.4rem;
+}
+
+main .date {
+    display: inline-block;
+    background: var(--color-light);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+}
+
+main .date input[type="date"] {
+    background: transparent;
+    color: var(--color-dark);
+}
+
+main .insights {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    padding: 20px;
+    height: 100vh;
+}
+
+main .insights > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .insights > div:hover {
+    box-shadow: none;
+}
+
+main .insights > div span {
+    background: #FFB3B3;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 2rem;
+}
+
+main .insights > div .middle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* ========== Temperature ========== */
+main .lef h3 {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.temp-sectionlow {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.temp-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.temp-sectionnormal{
+    font-size: 1rem;
+}
+
+.temp-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.temp-sectionhigh {
+    font-size: 1rem;
+}
+
+.temp-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+
+/* ========== Humidity ========== */
+main .insights > div.humidity span {
+    background-color: #ADD8E6;
+}
+
+.humidity-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.humidity-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.humidity-sectionnormal{
+    font-size: 1rem;
+}
+
+.humidity-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.humidity-sectionhigh {
+    font-size: 1rem;
+}
+
+.humidity-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Pressure ========== */
+main .insights > div.pressure span {
+    background-color: #B3E6B3;
+}
+
+.pressure-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.pressure-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.pressure-sectionnormal{
+    font-size: 1rem;
+}
+
+.pressure-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.pressure-sectionhigh {
+    font-size: 1rem;
+}
+
+.pressure-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Carbon Dioxide ========== */
+main .insights > div.co span {
+    background-color: #adabab;
+}
+
+.co2-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.co2-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.co2-sectionnormal{
+    font-size: 1rem;
+}
+
+.co2-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.co2-sectionhigh {
+    font-size: 1rem;
+}
+
+.co2-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Methane ========== */
+main .insights > div.methane span {
+    background-color: #FFCC99;
+}
+
+.methane-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.methane-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.methane-sectionnormal{
+    font-size: 1rem;
+}
+
+.methane-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.methane-sectionhigh {
+    font-size: 1rem;
+}
+
+.methane-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Ethanol ========== */
+main .insights > div.ethanol span {
+    background-color: #FFB8E0;
+}
+
+.ethanol-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.ethanol-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.ethanol-sectionnormal{
+    font-size: 1rem;
+}
+
+.ethanol-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.ethanol-sectionhigh {
+    font-size: 1rem;
+}
+
+.ethanol-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Nitrogen ========== */
+main .insights > div.nitrogen span {
+    background-color: #99CCFF;
+}
+
+.nitrogen-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.nitrogen-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.nitrogen-sectionnormal{
+    font-size: 1rem;
+}
+
+.nitrogen-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.nitrogen-sectionhigh {
+    font-size: 1rem;
+}
+
+.nitrogen-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Ammonia ========== */
+main .insights > div.ammonia span {
+    background-color: #E6B3FF;
+}
+
+.ammonia-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.ammonia-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.ammonia-sectionnormal{
+    font-size: 1rem;
+}
+
+.ammonia-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.ammonia-sectionhigh {
+    font-size: 1rem;
+}
+
+.ammonia-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+
+/* ========== Nitrogen dioxide ========== */
+main .insights > div.nitrodiox span {
+    background-color: #D9FF99;
+}
+
+.no2-sectionlow{
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.no2-sectionlow strong {
+    color: #0079FF; /* สีแดงสำหรับอุณหภูมิต่ำ */
+}
+
+.no2-sectionnormal{
+    font-size: 1rem;
+}
+
+.no2-sectionnormal strong {
+    color: #00DFA2; /* สีเขียวสำหรับอุณหภูมิปกติ */
+}
+
+.no2-sectionhigh {
+    font-size: 1rem;
+}
+
+.no2-sectionhigh strong {
+    color: #FF0060; /* สีส้มสำหรับอุณหภูมิสูง */
+}
+

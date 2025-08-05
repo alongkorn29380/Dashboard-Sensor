@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* นำเข้า font "Poppins" จาก Google Fonts เพื่อใช้เป็นฟอนต์หลักของหน้าเว็บ */
+
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+    /* กำหนดค่าตัวแปรสีหลักที่ใช้ในธีม */
+    --color-primary: #7380ec;
+    /* สีหลัก (น้ำเงิน) */
+    --color-danger: #ff7782;
+    /* สีแดง ใช้สำหรับแจ้งเตือน */
+    --color-success: #41f1b6;
+    /* สีเขียว ใช้สำหรับสถานะสำเร็จ */
+    --color-warning: #ffbb55;
+    /* สีส้ม ใช้สำหรับคำเตือน */
+    --color-white: #fff;
+    /* สีขาว */
+    --color-info-dark: #7d8da1;
+    /* สีเทาเข้ม */
+    --color-info-light: #dce1eb;
+    /* สีเทาอ่อน */
+    --color-dark: #363949;
+    /* สีดำเทา ใช้เป็นสีข้อความหลัก */
+    --color-light: rgba(132, 139, 200, 0.18);
+    /* สีพื้นหลังอ่อน */
+    --color-primary-variant: #111e88;
+    /* สีรองของสีหลัก */
+    --color-dark-variant: #677483;
+    /* สีเทากลาง */
+    --color-background: #f6f6f9;
+    /* สีพื้นหลังหลักของ UI */
+
+    /* กำหนดค่าความโค้งของมุมต่างๆ */
+    --card-border-radius: 2rem;
+    /* ความโค้งของการ์ด */
+    --border-radius-1: 0.4rem;
+    /* ความโค้งระดับเล็ก */
+    --border-radius-2: 0.8rem;
+    /* ความโค้งระดับกลาง */
+    --border-radius-3: 1.2rem;
+    /* ความโค้งระดับใหญ่ */
+
+    /* กำหนดค่าระยะห่าง (Padding) */
+    --card-padding: 1.8rem;
+    /* Padding ภายในการ์ด */
+    --padding-1: 1.2rem;
+    /* Padding ทั่วไปที่ใช้ในหลายๆ องค์ประกอบ */
+
+    /* กำหนดค่าเงาขององค์ประกอบ */
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    /* เงาที่ใช้ใน UI */
+    --green-light: #e8f5e9;
+    --green-main: #4caf50;
+    --green-dark: #2e7d32;
+    --green-deep: #1b5e20;
+    --green-muted: #a5d6a7;
+    --bg-gradient: linear-gradient(to bottom right, #e0f2f1, #a5d6a7);
+}
+
+
+
+.date input {
+    background-color: transparent;
+    /* ไม่ให้พื้นหลังขาว */
+    padding: 2px 2px;
+    width: 70px;
+    /* ความกว้างของช่อง input */
+}
+
+/* ---------- GLOBAL RESET STYLES ---------- */
+* {
+    margin: 0;
+    /* ล้างค่า margin ทั้งหมด */
+    padding: 0;
+    /* ล้างค่า padding ทั้งหมด */
+    outline: 0;
+    /* ลบเส้นขอบเมื่อมีการ focus */
+    appearance: none;
+    /* ปิดค่าดีฟอลต์ของ Browser */
+    border: 0;
+    /* เอาขอบออก */
+    text-decoration: none;
+    /* เอาเส้นขีดเส้นใต้ของลิงก์ออก */
+    list-style: none;
+    /* เอา bullet หรือหมายเลขของ list ออก */
+    box-sizing: border-box;
+    /* ทำให้ padding และ border ถูกนับรวมในขนาดขององค์ประกอบ */
+    
+}
+
+html {
+    font-size: 14px;
+    /* กำหนดขนาดตัวอักษรพื้นฐาน */
+}
+
+body {
+    width: 100vw;
+    /* ใช้ความกว้างเต็มหน้าจอ */
+    height: 100vh;
+    /* ใช้ความสูงเต็มหน้าจอ */
+    font-family: poppins, sans-serif;
+    /* ใช้ฟอนต์ Poppins ที่นำเข้า */
+    font-size: 0.88rem;
+    /* กำหนดขนาดตัวอักษร */
+    user-select: none;
+    /* ป้องกันการเลือกข้อความ */
+    background: var(--color-background);
+    /* ใช้สีพื้นหลังที่กำหนดไว้ */
+    overflow-x: hidden;
+    /* ปิดการเลื่อนแนวนอน */
+    color: var(--color-dark);
+}
+
+/* ---------- LAYOUT CONTAINER ---------- */
+.container {
+    display: grid;
+    /* ใช้ Grid Layout */
+    width: 100%;
+    /* กำหนดความกว้างของ container */
+    margin: 0 auto;
+    /* จัดกึ่งกลางหน้าจอ */
+    gap: 1.8rem;
+    /* กำหนดระยะห่างระหว่าง Grid Items */
+    grid-template-columns: 14rem auto 1rem;
+    /* กำหนดขนาดของแต่ละคอลัมน์ */
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+a {
+    color: var(--color-dark);
+    /* กำหนดสีของลิงก์ */
+}
+
+img {
+    display: block;
+    /* ทำให้ไม่มีช่องว่างด้านล่างของรูปภาพ */
+    width: 100%;
+    /* กำหนดให้รูปภาพเต็มความกว้างของ container */
+    margin-left: 20px;
+}
+
+/* ---------- HEADING STYLES ---------- */
+h1 {
+    font-weight: 800;
+    /* ความหนาของตัวอักษร */
+    font-size: 1.8rem;
+    /* ขนาดตัวอักษร */
+}
+
+
+h2 {
+    font-size: 1.4rem;
+    /* ขนาดตัวอักษรของหัวข้อระดับ 2 (H2) */
+}
+
+h3 {
+    font-size: 0.87rem;
+    /* ขนาดตัวอักษรของหัวข้อระดับ 3 (H3) */
+}
+
+h4 {
+    font-size: 0.8rem;
+    /* ขนาดตัวอักษรของหัวข้อระดับ 4 (H4) */
+}
+
+h5 {
+    font-size: 0.77rem;
+    /* ขนาดตัวอักษรของหัวข้อระดับ 5 (H5) */
+}
+
+small {
+    font-size: 0.75rem;
+    /* ขนาดตัวอักษรสำหรับข้อความขนาดเล็ก */
+}
+
+/* ---------- PROFILE PHOTO ---------- */
+/* กำหนดรูปแบบของรูปโปรไฟล์ */
+.profile-photo {
+    width: 2.8rem;
+    /* ความกว้างของรูปภาพ */
+    height: 2.8rem;
+    /* ความสูงของรูปภาพ */
+    border-radius: 50%;
+    /* ทำให้รูปภาพเป็นวงกลม */
+    overflow: hidden;
+    /* ป้องกันไม่ให้รูปภาพล้นออกจากขอบ */
+}
+
+/* ---------- TEXT COLOR UTILITY ---------- */
+/* กำหนดสีข้อความสำหรับองค์ประกอบต่างๆ */
+.text-muted {
+    color: var(--color-info-dark);
+    /* สีเทาอ่อนสำหรับข้อความรอง */
+}
+
+p {
+    color: var(--color-dark-variant);
+    /* สีเทาเข้มสำหรับย่อหน้า */
+}
+
+b {
+    color: var(--color-dark);
+    /* สีเข้มสำหรับข้อความตัวหนา */
+}
+
+/* ---------- COLOR UTILITIES ---------- */
+/* กำหนดสีให้กับคลาสที่ใช้ในการแสดงสถานะหรือหมวดหมู่ต่างๆ */
+.primary {
+    color: var(--color-primary);
+    /* สีหลัก (ฟ้า) */
+}
+
+.danger {
+    color: var(--color-danger);
+    /* สีแดง ใช้สำหรับแสดงข้อผิดพลาดหรือคำเตือน */
+}
+
+.success {
+    color: var(--color-success);
+    /* สีเขียว ใช้สำหรับสถานะสำเร็จ */
+}
+
+.warning {
+    color: var(--color-warning);
+    /* สีเหลือง ใช้สำหรับการแจ้งเตือน */
+}
+
+.air {
+    color: #30dd36;
+}
+
+/* ---------- SIDEBAR ---------- */
+/* สไตล์ของแถบด้านข้าง (Sidebar) */
+aside {
+    height: 100vh;
+    /* ให้ Sidebar สูงเท่ากับหน้าจอทั้งหมด */
+}
+
+aside .top {
+    background: white;
+    /* พื้นหลังสีขาว */
+    display: flex;
+    /* ใช้ Flexbox */
+    align-items: center;
+    /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    margin-top: 1.4rem;
+    /* เว้นระยะจากด้านบน */
+}
+
+/* ---------- LOGO ---------- */
+aside .logo {
+    display: flex;
+    /* จัดเรียงไอคอนและข้อความให้อยู่ในแนวเดียวกัน */
+    gap: 0.8rem;
+    /* เว้นระยะห่างระหว่างโลโก้กับข้อความ */
+}
+
+aside .logo img {
+    width: 2rem;
+    /* กำหนดขนาดความกว้างของโลโก้ */
+    height: 2rem;
+    /* กำหนดขนาดความสูงของโลโก้ */
+}
+
+aside .close {
+    display: none;
+    /* ซ่อนปุ่มปิด Sidebar */
+}
+
+/* ---------- SIDEBAR MENU ---------- */
+aside .sidebar {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    /* เรียงเมนูในแนวตั้ง */
+    height: 93%;
+    /* กำหนดความสูง */
+    position: relative;
+    top: 2rem;
+    /* เลื่อน Sidebar ลงมา */
+}
+
+/* ---------- SIDEBAR TEXT STYLE ---------- */
+aside h3 {
+    font-weight: 500;
+    /* กำหนดความหนาของตัวอักษร */
+}
+
+/* ---------- SIDEBAR MENU ITEM ---------- */
+aside .sidebar a {
+    margin-top: 2rem;
+    display: flex;
+    /* จัดเรียงไอคอนและข้อความในแนวนอน */
+    color: var(--color-info-dark);
+    /* กำหนดสีข้อความ */
+    margin-left: 2rem;
+    /* กำหนดระยะห่างจากด้านซ้าย */
+    gap: 1rem;
+    /* ระยะห่างระหว่างไอคอนและข้อความ */
+    align-items: center;
+    /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    position: relative;
+    /* ใช้สำหรับจัดการตำแหน่ง */
+    height: 4rem;
+    /* กำหนดความสูงของแต่ละเมนู */
+    transition: all 400ms ease;
+    /* ทำให้การเปลี่ยนแปลงเป็นไปอย่างนุ่มนวล */
+}
+
+/* ---------- ICON SIZE INSIDE SIDEBAR ---------- */
+aside .sidebar a span {
+    font-size: 1.6rem;
+    /* กำหนดขนาดของไอคอน */
+    transition: all 400ms ease;
+    /* ทำให้ไอคอนเคลื่อนไหวได้ */
+}
+
+/* ---------- ACTIVE MENU ITEM ---------- */
+aside .sidebar a.active {
+    background: var(--color-light);
+    /* พื้นหลังของเมนูที่ถูกเลือก */
+    color: var(--color-primary);
+    /* เปลี่ยนสีข้อความเป็นสีหลัก */
+    margin-left: 0;
+    /* ชิดขอบซ้าย */
+}
+
+aside .sidebar a.active:before {
+    content: "";
+    /* สร้างแท่งไฮไลต์ด้านซ้าย */
+    width: 6px;
+    /* ความกว้างของแถบ */
+    height: 50%;
+    /* ความสูงเต็มของเมนู */
+    background: var(--color-primary);
+    /* ใช้สีหลัก */
+}
+
+/* ---------- ACTIVE MENU ITEM ICON ---------- */
+aside .sidebar a.active span {
+    color: var(--color-primary);
+    /* เปลี่ยนสีของไอคอน */
+    margin-left: calc(1rem - 3px);
+    /* เลื่อนไอคอนให้ขยับเล็กน้อย */
+}
+
+/* ---------- HOVER EFFECT ON SIDEBAR ---------- */
+aside .sidebar a:hover {
+    color: var(--color-primary);
+    /* เปลี่ยนสีข้อความเป็นสีหลัก */
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1.5rem;
+    /* ขยับไอคอนไปทางขวา */
+}
+
+/* ---------- MAIN ---------- */
+main {
+    background: linear-gradient(to bottom right, #e0f2f1, #a5d6a7);
+    /* ไล่เฉดจากเขียวอ่อนไปเหลืองอ่อน */
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    /* ใช้ฟอนต์ดูสะอาดตา */
+    border-radius: var(--border-radius-2);
+    /* ความโค้งของมุม */
+    padding: var(--padding-1);
+    /* Padding รอบๆ */
+    box-shadow: var(--box-shadow);
+    /* เงาของการ์ด */
+    position: relative;
+    /* ใช้สำหรับจัดการตำแหน่ง */
+    overflow: hidden;
+    /* ป้องกันไม่ให้เนื้อหาล้นออกจากการ์ด */
+}
+
+.header {
+  font-size: 20px;
+}
+
+.header span {
+  color: var(--green-main);
+  /* สีหลัก */
+  font-weight: 600;
+  /* หนัก */
+}
+
+/* กำหนดสไตล์ของกล่องหลัก (card) */
+.card {
+  background: #ffffff; /* พื้นหลังสีขาว */
+  border-radius: 30px; /* ขอบมน 30px */
+  display: flex; /* แสดงผลแบบ flexbox */
+  overflow: hidden; /* ซ่อนสิ่งที่เกินขอบ */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1); /* เงาเบา ๆ รอบกล่อง */
+  margin: 30px; /* ระยะห่างจากขอบ */
+  height: 850px; 
+}
+
+/* ส่วนด้านซ้ายของกล่อง */
+.left {
+  flex: 1; /* ใช้พื้นที่ครึ่งหนึ่งของ .card */
+  padding: 60px 50px; /* เว้นขอบด้านใน */
+  display: flex;
+  flex-direction: column; /* จัดเนื้อหาในแนวตั้ง */
+  justify-content: space-between; /* เว้นช่องว่างระหว่างเนื้อหา */
+}
+
+/* เมนูด้านบน */
+.menu {
+  margin-top: 20px; /* ระยะห่างจากด้านบน */
+}
+
+/* ลิงก์ในเมนู */
+.menu a {
+  margin-right: 20px; /* เว้นระยะห่างด้านขวาระหว่างลิงก์ */
+  text-decoration: none; /* ไม่มีขีดเส้นใต้ */
+  color: var(--green-dark); /* ใช้สีจากตัวแปร --green-dark */
+  font-size: 14px; /* ขนาดตัวอักษร */
+}
+
+/* ส่วนของข้อความหลัก */
+.text {
+  margin-top: 50px; /* ระยะห่างด้านบน */
+}
+
+/* หัวข้อย่อย */
+.text .subheading {
+  color: var(--green-muted); /* สีจาง */
+  text-transform: uppercase; /* ตัวพิมพ์ใหญ่ทั้งหมด */
+  font-size: 14px;
+  margin-bottom: 10px; /* ระยะห่างจากหัวข้อหลัก */
+}
+
+/* หัวข้อหลัก */
+.text h1 {
+  font-size: 150px;
+  font-weight: bold; /* ตัวหนา */
+  margin-bottom: 20px;
+}
+
+/* ข้อความที่ต้องเน้นในหัวข้อหลัก */
+.text h1 span {
+  color: var(--green-main); /* สีหลักของธีม */
+}
+
+
+/* คำอธิบายใต้หัวข้อ */
+.text .desc {
+  font-size: 16px;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+}
+
+/* ลิงก์ "อ่านเพิ่มเติม" */
+.readmore {
+  font-size: 14px;
+  color: var(--green-main);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+/* ส่วนด้านขวาของกล่อง */
+.right {
+  flex: 1; /* ใช้พื้นที่อีกครึ่งของ .card */
+  background: linear-gradient(to bottom, #c8e6c9, #a5d6a7); /* ไล่สีพื้นหลัง */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.map{
+  margin-top: 200px;
+}
+
+/* รูปจรวด */
+.rocket {
+  width: 180px; /* ขนาดของจรวด */
+  animation: float 4s ease-in-out infinite; /* เคลื่อนไหวลอยขึ้นลง */
+  position: absolute; /* ตำแหน่งแบบ absolute เพื่อให้ขยับได้ */
+  top: 20px; /* ชิดด้านบน */
+  left: 0; /* ชิดด้านซ้าย */
+  margin: 20px; /* ขอบเล็กน้อย */
+}
+
+/* วงกลมพื้นหลังคล้ายดาวเคราะห์ */
+.planet {
+  width: 250px;
+  height: 250px;
+  background: var(--green-main); /* สีหลัก */
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  position: absolute;
+  bottom: -70px;
+  right: -70px;
+  opacity: 0.15; /* ความโปร่งใส */
+  filter: blur(30px); /* เบลอ */
+}
+
+/* องค์ประกอบพื้นหลังอื่น ๆ */
+.bg-element {
+  position: absolute;
+  opacity: 0.4; /* โปร่งใสเล็กน้อย */
+}
+
+/* รูปนก */
+.birds {
+  width: 180px; /* ขนาดของจรวด */
+  animation: float 4s ease-in-out infinite; /* เคลื่อนไหวลอยขึ้นลง */
+  position: absolute; /* ตำแหน่งแบบ absolute เพื่อให้ขยับได้ */
+  top: 150px;
+  right: 30px;
+  opacity: 1; /* ทำให้ไม่จาง */
+}
+
+/* แอนิเมชันสำหรับการลอยของจรวด */
+@keyframes float {
+  0% {
+      transform: translateY(0); /* เริ่มต้น */
+  }
+  50% {
+      transform: translateY(-20px); /* ลอยขึ้น */
+  }
+  100% {
+      transform: translateY(0); /* กลับลงมา */
+  }
+}
+
+.text {
+  display: flex;
+  align-items: center; /* Aligns content vertically in the center */
+  justify-content: space-between; /* Distribute space between text and image */
+  flex-wrap: wrap; /* Allows wrapping of content if the screen is too small */
+}
+
+.content {
+  flex: 1;
+  padding-right: 20px; /* Add some spacing between text and image */
+}
+
+.image {
+  flex: 0 0 auto; /* Image will not grow or shrink */
+}
+
+img.leaf {
+  width: 100%; /* Adjust based on your needs */
+  max-width: 450px; /* Set a max-width for the image */
+  height: auto;
+}
