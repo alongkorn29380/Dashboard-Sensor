@@ -1420,8 +1420,29 @@ function getNitrColor(nitr) {
 
 /*------------------ จำลองค่าความเข้มข้น Nitrogen Dioxide ทุก 3 วินาที ------------------*/
 
+/*------------------------------ Simulation (All Charts) - Remove when using real sensor --------------------------------------*/
+
+function getRandomInRange(min, max) {
+    return min + Math.random() * (max - min);
+}
+
+setInterval(function () {
+    updateCharts({
+        temperature:        getRandomInRange(20, 40),
+        humidity:           getRandomInRange(30, 80),
+        pressure:           getRandomInRange(980, 1020),
+        coConcentration:    getRandomInRange(350, 1500),
+        ch4Concentration:   getRandomInRange(500, 3500),
+        c2h5ohConcentration: getRandomInRange(200, 3000),
+        h2Concentration:    getRandomInRange(500, 3500),
+        nh3Concentration:   getRandomInRange(10, 200),
+        no2Concentration:   getRandomInRange(10, 200)
+    });
+}, 3000);
+
 
 /*------------------ Plugin แสดงเวลาล่าสุดที่มุมขวาล่างของกราฟ ------------------*/
+
 Chart.register({
     id: 'lastTimeDisplay',
     afterDraw: function (chart) {
